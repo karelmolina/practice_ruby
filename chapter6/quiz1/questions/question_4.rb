@@ -34,3 +34,56 @@
 #   If the tests hang when you run them, it probably means your code
 #   doesn't work correctly, yet.
 
+puts "Two rooms: hall and study"
+
+win = false
+
+while win == false
+
+	puts "choose your action: north, south, look"
+	$action = gets.chomp.downcase
+
+	if $action == 'north'
+
+		puts "Move to the study."
+
+		loop do 
+			puts "choose your action:"
+			$action2 = gets.chomp.downcase
+			if $action2 == 'look'
+				puts "You are in a warm and cosy study. You see a safe. You see a desk."
+
+			elsif $action2 == 'look at desk'
+				puts "You see a piece of paper that reads, The combination is 2451."
+			else
+				
+			end
+
+			break if $action2 == 'south'
+		end
+
+		win = false
+			 
+	elsif $action == 'look'
+		puts "you are standing in an hall with a marble floor. You see a door"
+
+	elsif $action == 'enter combination'
+		puts "combination : "
+		$combination = gets.chomp.downcase
+
+		if $combination == '2451' 
+			win = true
+			puts "You see some diamonds in the safe, pick them up and make your escape"
+		else
+			win = false
+		end
+
+	elsif $action == 'quit'
+		puts "Bye!"
+		break
+
+	else
+
+	end
+
+end	

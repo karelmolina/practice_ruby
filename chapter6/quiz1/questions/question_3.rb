@@ -22,3 +22,40 @@
 #   the user input.  You shouldn't need to enter any input manually.
 #   If the tests hang when you run them, it probably means your code
 #   doesn't work correctly, yet.
+
+	win = false
+
+	def input_option
+		#STDIN.flush
+		$action = gets.chomp 
+	end
+
+	def input_option2
+		#STDIN.flush
+		$action2 = gets.chomp 
+	end
+	 
+	while win == false
+		puts "Choose your direction: North and South"
+		$action = input_option()
+
+		if $action == 'north'
+			puts "you are in a scary cave\n"
+			win = false
+
+		elsif $action == 'south'
+			puts"you are in a scary passage\n"
+			win = false
+			puts "Choose your direction: North and South"
+			$action2 = input_option2()
+			if $action2 == 'north'
+				puts "You walk into sunlight\n"
+				win = true
+			else
+				$action == 'north'
+				win = false 
+			end
+		else
+			win = false
+		end
+	end
