@@ -18,3 +18,11 @@
 #
 # * Note: You can assume the user will only enter integers separated
 #   by commas with no spaces.
+
+puts "Enter some numbers to graph: "
+
+input = gets.chomp
+
+graph = input.split(',').map { |e| e.to_i  }
+
+graph.each {|x| puts '-'*x }

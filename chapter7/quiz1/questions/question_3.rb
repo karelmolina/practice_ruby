@@ -62,3 +62,42 @@
 #   You survived!
 #   ```
 
+
+river = "----,--C--,CC-CC,CC-CC".split(",")
+
+player = 2
+action = 0
+
+river [action][player] = 'P'
+
+puts river
+
+loop do
+	if action == 3
+		puts "you survived!"
+		break
+	end
+	
+	puts "left, right or neither what your next move? " 
+	move = gets.chomp
+
+	river[action][player] = '-'
+	action +=1
+
+	if move == 'left'
+		player -= 1
+	elsif move == 'right'
+		player += 1
+	end
+
+	
+
+	if river[action][player] == 'C'
+		puts "You were eaten"
+		break
+	else
+		river[action][player] = 'P'
+	end
+		
+	puts river
+end 
