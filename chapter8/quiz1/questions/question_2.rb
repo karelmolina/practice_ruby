@@ -19,3 +19,26 @@
 # Note: You can assume that, when asked for a category, the user will
 # only enter either `sport` or `fruit`.  The user might enter a
 # category value that no person has (e.g. `mango`).
+
+
+puts "Which category will you choose? "
+input = gets.chomp
+
+list =
+[
+	["name" => "Awad", "fruit" => "kiwi"],
+	["name" => "Mary", "sport" => "squash"],
+	["name" => "Lauren", "sport" => "squash"],
+	["name" => "Govind", "sport" => "squash"],
+]
+
+puts "Which category value you choose?"
+value = gets.chomp
+
+list.each do |val|
+	val.each do |x|
+		if x[input] == value
+			puts x["name"]
+		end
+	end
+end

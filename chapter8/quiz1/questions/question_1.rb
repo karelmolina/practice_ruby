@@ -16,3 +16,34 @@
 # * Note: You can assume that the user will enter a word that only
 #   contains letters and blanks.  You can assume the word will be in
 #   uppercase.
+
+
+puts "Give me a word: "
+word = gets.chomp
+
+points = 
+{
+	0 => [""],
+	1 => ["E","A","I","O","N","R","T","L","S","U"],
+	2 => ["D","G"],
+	3 => ["B","C","M","P"],
+	4 => ["F","H","V","W","Y"],
+	5 => ["K"],
+	8 => ["J","X"],
+	10 => ["Q","z"]
+} 
+
+total = 0
+word.each_char do |letter|
+	points.each do |key , value|
+		value.each do |char|
+			if letter == char
+				total = total + key.to_i
+			end	
+		end
+	end
+end
+
+
+
+puts total
