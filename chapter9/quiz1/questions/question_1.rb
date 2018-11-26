@@ -59,3 +59,53 @@ def random_card
   cards[rand(13)]
 end
 
+
+cards_n = {
+  2 => "two",
+  3 => "three",
+  4 => "four",
+  5 => "five",
+  6 => "six",
+  7 => "seven",
+  8 => "eight",
+  9 => "nine",
+  10 => ["ten","jack","queen","king","ace"]
+}
+
+hand = []
+total = 0
+number = 0
+
+loop do
+  puts "Do you want hit o stick"
+  input = gets.chomp
+
+  if input == "stick"
+    puts "the outcome of the game."
+    if total <= 21
+      puts "You scored: #{total}"
+
+    elsif total > 21
+      puts "You busted with: #{total}"
+    end
+    break
+  end
+
+  if input == "hit"
+    rand = random_card()
+
+    cards_n.each do |key,value|
+        if rand == value
+          number = key
+          hand << number
+      end
+
+    end
+
+    hand.each do |var|
+      total += var
+    end
+
+    puts "Score so far: #{total}"
+  end
+end
