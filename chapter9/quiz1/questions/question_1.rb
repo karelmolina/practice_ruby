@@ -51,6 +51,13 @@
 #   exit a while loop early, use the `break` keyword.
 
 # You don't need to change this method!
+
+
+$hand = []
+$number = 0
+$score = 0
+$total = 0
+
 def random_card
   cards = ["two", "three", "four", "five", "six", "seven",
            "eight", "nine", "ten",
@@ -59,53 +66,64 @@ def random_card
   cards[rand(13)]
 end
 
+def move moves
 
-cards_n = {
-  2 => "two",
-  3 => "three",
-  4 => "four",
-  5 => "five",
-  6 => "six",
-  7 => "seven",
-  8 => "eight",
-  9 => "nine",
-  10 => ["ten","jack","queen","king","ace"]
-}
-
-hand = []
-total = 0
-number = 0
-
-loop do
-  puts "Do you want hit o stick"
-  input = gets.chomp
-
-  if input == "stick"
+  if moves == "stick"
     puts "the outcome of the game."
-    if total <= 21
-      puts "You scored: #{total}"
-
-    elsif total > 21
-      puts "You busted with: #{total}"
+    if $total <= 21
+      puts "You scored: #{$total}"
     end
-    break
+    if $total > 21
+      puts "You busted with: #{$total}"
+    end
+    return false
   end
 
-  if input == "hit"
+  if moves == "hit"
     rand = random_card()
+    $total = score(rand)
+    puts "Score so far: #{$total}"
+    return true
+  end
 
-    cards_n.each do |key,value|
-        if rand == value
-          number = key
-          hand << number
-      end
+end
 
+def score cards
+
+  cards_n = {
+    2 => "two",
+    3 => "three",
+    4 => "four",
+    5 => "five",
+    6 => "six",
+    7 => "seven",
+    8 => "eight",
+    9 => "nine",
+    10 => ["ten","jack","queen","king","ace"]
+  }
+
+  cards_n.each do |key, value|
+    if cards == value
+        $number = key
+        $hand << $number
     end
+  end
 
-    hand.each do |var|
-      total += var
-    end
+  $hand.each do |var|
+      $score += var
+  end
 
-    puts "Score so far: #{total}"
+$score
+end
+
+def run_game
+  loop do
+    puts "Do you want hit o stick"
+    input = gets.chomp
+    cond = move(input)
+
+    break if cond == false
   end
 end
+
+run_game()
